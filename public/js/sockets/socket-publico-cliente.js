@@ -6,11 +6,11 @@ socket.on('disconnect', function() {
   console.log('Conexión perdida con el servidor');
 });
 socket.emit('obtenerUltimos4', {}, function(data) {
-  console.log(data);
   mostrarUltimos(data.ultimos4);
 });
-socket.on('ticketAtendido', function(data) {
-  console.log(data);
+socket.on('ticketAtendido', async function(data) {
+  const audio = new Audio('audio/new-ticket.mp3');
+  await audio.play()
   mostrarUltimos(data.ultimos4);
 });
 
